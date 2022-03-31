@@ -1,0 +1,16 @@
+
+.MuiPaper-root{
+    padding: 20px;
+}
+
+.MuiTypography-root{
+    display: flex;
+    justify-content: center;
+}
+
+.MuiTypography-h4{
+    .MuiBox-root{
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+}

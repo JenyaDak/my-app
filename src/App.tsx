@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './components/login/index';
+import Dashboard from './components/dashboard/index';
+import GuestRoute from './utils/GuestRoute';
+import PrivateRoute from './utils/PrivateRoute';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import { CheckAuthentication } from './utils/CheckAuthentication';
+import SnackHelper from './utils/SnackHelper';
+import './app.scss';
 
-function App() {
+const App: React.FC = () => {
+  useEffect(() => {
+    CheckAuthentication();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={store}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<PrivateRoute />} />
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <GuestRoute>
+                  <Login />
+                </GuestRoute>
+              }
+            />
+          </Routes>
+        </Router>
+        <SnackHelper />
+      </Provider>
     </div>
   );
-}
-
+};
 export default App;

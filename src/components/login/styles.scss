@@ -1,0 +1,47 @@
+
+.MuiTypography-h4{
+    .MuiBox-root{
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+}
+
+ .field-wrapper{
+    margin-bottom: 20px;
+     &:last-of-type{
+        margin-bottom: 50px;
+    }
+ }
+
+.MuiPaper-root{
+    padding: 20px;
+}
+
+.MuiTypography-root{
+    display: flex;
+    justify-content: center;
+
+}
+
+.MuiGrid-container {
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.MuiTextField-root{
+    width: 100%;
+    max-width:200px;
+}
+
+.MuiCircularProgress-root{
+    margin-left: 10px;
+   
+}
+
+.form-error{
+    color:red
+}
+
+.MuiPaper-root .submit-button{
+    margin-right: 16px;
+}
